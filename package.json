@@ -8,7 +8,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-      "attempt": "npm run build && node ./dist/test.js",
+    "attempt": "npm run build && node ./dist/test.js",
     "build": "rmdir dist /s /q && tsc",
     "test": "jest",
     "lint": " tslint -p tsconfig.json",
@@ -33,7 +33,7 @@
     "tslint": "^5.19.0",
     "typescript": "^3.5.3"
   },
-  "version": "0.0.0",
+  "version": "1.0.0",
   "bugs": {
     "url": "https://github.com/ztrank/project-reference/issues"
   },
