@@ -7,7 +7,7 @@ import { PackageUploader } from './interfaces/Package.Uploader';
 import { Storage } from '@google-cloud/storage';
 
 export function Init(
-    storageClientCertLocation: string = 'C:\\service-accounts\\azimuth-package-manager',
+    storageClientCertLocation: string = 'C:\\service-accounts\\azimuth-package-manager.json',
     bucket: string = 'azimuth-packages'
 ): PackageUploader {
     const container = new Container();
