@@ -1,0 +1,51 @@
+{
+  "author": "ztrank",
+  "homepage": "https://github.com/ztrank/project-reference#readme",
+  "repository": {
+    "url": "https://github.com/ztrank/project-reference.git",
+    "type": "git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+      "attempt": "npm run build && node ./dist/test.js",
+    "build": "rmdir dist /s /q && tsc",
+    "test": "jest",
+    "lint": " tslint -p tsconfig.json",
+    "version": "git add -A src",
+    "prepare": "",
+    "prepublishOnly": "npm test && npm run build && npm run lint",
+    "preversion": "npm test && npm run build && npm run lint",
+    "postversion": "git push && git push --tags"
+  },
+  "description": "",
+  "name": "@trankzachary/project-reference-uploader",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/fs-extra": "^8.0.0",
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.2",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.19.0",
+    "typescript": "^3.5.3"
+  },
+  "version": "0.0.0",
+  "bugs": {
+    "url": "https://github.com/ztrank/project-reference/issues"
+  },
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.4",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.2"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "types": "dist/index.d.ts"
+}
