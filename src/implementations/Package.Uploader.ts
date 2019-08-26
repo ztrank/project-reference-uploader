@@ -61,7 +61,7 @@ export class PackageUploaderImpl implements PackageUploader {
                         repository: pkg.repository ? pkg.repository.url : '',
                         directory: ''
                     };
-                    return this.fileUtil.saveFile(meta, this.getDir('package-metadata.json'))
+                    return this.fileUtil.saveFile(JSON.stringify(meta), this.getDir('package-metadata.json'))
                 }),
                 mergeMap(() => throwError(new Error('Unable to upload Package. Metadata was missing. Please set the directory of files to upload and try again.')))
             );
@@ -94,7 +94,7 @@ export class PackageUploaderImpl implements PackageUploader {
                         return throwError('Version already exists!!!');
                     }
                     meta[this.metadata.name][this.metadata.version] = this.metadata;
-                    return this.fileUtil.saveFile(meta, this.getDir('temp', 'repository-metadata.json'));
+                    return this.fileUtil.saveFile(JSON.stringify(meta), this.getDir('temp', 'repository-metadata.json'));
                 }),
                 mergeMap(() => this.uploadUtil.upload(this.bucket, this.getDir('temp', 'repository-metadata.json'), 'repository-metadata.json')),
                 map(() => {})

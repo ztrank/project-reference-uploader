@@ -21,6 +21,7 @@ const fileUtil = {
         expect(content).toBeDefined();
         expect(path).toBeDefined();
         if(path.endsWith('repository-metadata.json')) {
+            content = JSON.parse(content);
             expect(content["azimuth-test"]).toBeDefined();
             expect(content["azimuth-test"]["1.0.2"]).toBeDefined();
         }
