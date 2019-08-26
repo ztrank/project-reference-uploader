@@ -1,8 +1,8 @@
 {
   "author": "ztrank",
-  "homepage": "https://github.com/ztrank/project-reference#readme",
+  "homepage": "https://github.com/ztrank/project-reference-uploader#readme",
   "repository": {
-    "url": "https://github.com/ztrank/project-reference.git",
+    "url": "https://github.com/ztrank/project-reference-uploader.git",
     "type": "git"
   },
   "license": "MIT",
@@ -35,7 +35,7 @@
   },
   "version": "1.0.0",
   "bugs": {
-    "url": "https://github.com/ztrank/project-reference/issues"
+    "url": "https://github.com/ztrank/project-reference-uploader/issues"
   },
   "dependencies": {
     "fs-extra": "^8.1.0",
