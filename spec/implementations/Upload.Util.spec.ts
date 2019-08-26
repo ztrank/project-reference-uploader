@@ -101,7 +101,9 @@ test('Upload All', (done) => {
     const uploadUtil = new UploadUtilImpl(<FileUtil><any>fileUtil, client);
     uploadUtil.upload(bucketName, 'project\\temp\\package', remoteRoot)
         .subscribe({
-            next: () => {
+            next: files => {
+                files.forEach(file => expect(expectedUploadFiles.indexOf(file) > -1).toBe(true));
+                expectedUploadFiles.forEach(file => expect(files.indexOf(file) > -1).toBe(true));
                 expect(client.bucket).toHaveBeenCalled();
                 expect(bucket.upload).toHaveBeenCalled();
                 expect(fileUtil.isDirectory).toHaveBeenCalled();

@@ -35,7 +35,7 @@ const fileUtil = {
 const uploadUtil = {
     upload: jest.fn().mockImplementation((bucket, local, remote) => {
         
-        return of(undefined);
+        return of([]);
     }),
     download: jest.fn().mockImplementation(() => {
         return of(undefined);
