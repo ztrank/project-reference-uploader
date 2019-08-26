@@ -74,7 +74,7 @@ export class PackageUploaderImpl implements PackageUploader {
     private uploadTemp(): Observable<void> {
         return this.uploadUtil.upload(this.bucket, this.getDir('temp', 'package'), Path.join(this.metadata.name, this.metadata.version))
             .pipe(
-                mergeMap(() => this.uploadUtil.upload(this.bucket, this.getDir('package-metadata.json'), Path.join(this.metadata.name, this.metadata.version)))
+                mergeMap(() => this.uploadUtil.upload(this.bucket, this.getDir('package-metadata.json'), Path.join(this.metadata.name, this.metadata.version, 'package-metadata.json')))
             )
     }
 
