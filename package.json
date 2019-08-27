@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^3.2.0",
+    "argv": "0.0.2",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "inversify": "^5.0.1",
@@ -46,7 +47,11 @@
     "rxjs": "^6.5.2"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "bin/**/*"
   ],
+  "bin": {
+      "azup": "./bin/index.js"
+  },
   "types": "dist/index.d.ts"
 }

@@ -19,3 +19,16 @@ export function Init(
     const uploader = container.get<PackageUploader>('PackageUploader');
     return uploader;
 }
+
+export const Options = [
+    {
+        name: 'account',
+        short: 'a',
+        type: 'string'
+    },
+    {
+        name: 'bucket',
+        short: 'b',
+        type: 'string'
+    }
+];
