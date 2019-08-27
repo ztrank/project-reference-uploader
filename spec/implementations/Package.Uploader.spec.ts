@@ -17,6 +17,9 @@ const fileUtil = {
         return process.cwd();
     }),
     getFile: jest.fn(),
+    remove: jest.fn().mockImplementation(() => {
+        return of(undefined);
+    }),
     saveFile: jest.fn().mockImplementation((content, path) => {
         expect(content).toBeDefined();
         expect(path).toBeDefined();

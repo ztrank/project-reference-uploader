@@ -13,6 +13,10 @@ export class FileUtilImpl implements FileUtil {
         return process.cwd();
     }
 
+    public remove(...paths: string[]): Observable<void> {
+        return from(fs.remove(Path.join(...paths)));
+    }
+
     public copyFile(fromDirectory: string, toDirectory: string): Observable<void> {
         return from(
             fs.ensureDir(toDirectory)

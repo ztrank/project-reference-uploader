@@ -78,7 +78,11 @@ export class PackageUploaderImpl implements PackageUploader {
     }
 
     private copyToTemp(): Observable<void> {
-        return this.fileUtil.copyFile(this.getDir(this.metadata.directory), Path.join(this.temp, 'package'));
+        return this.fileUtil.remove(Path.join(this.temp, 'package'))
+            .pipe(
+                mergeMap(() => this.fileUtil.copyFile(this.getDir(this.metadata.directory), Path.join(this.temp, 'package')))
+            );
+            
     }
 
     private uploadTemp(): Observable<void> {

@@ -8,4 +8,5 @@ export interface FileUtil {
     listFiles(...paths: string[]): Observable<string[]>;
     isDirectorySync(...paths: string[]): boolean;
     isDirectory(...paths: string[]): Observable<boolean>;
+    remove(...paths: string[]): Observable<void>;
 }
