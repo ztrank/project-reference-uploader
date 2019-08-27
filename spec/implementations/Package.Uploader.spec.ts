@@ -29,7 +29,7 @@ const fileUtil = {
     }),
     copyFile: jest.fn().mockImplementation((source: string, dest: string) => {
         expect(source).toBe(Path.join(process.cwd(), metadata.directory));
-        expect(dest).toBe(Path.join(process.cwd(), 'temp', 'package'));
+        expect(dest).toBe(Path.join('C:\\temp\\azimuth-packages', 'package'));
         return of(undefined);
     })
 };
@@ -44,6 +44,11 @@ const uploadUtil = {
 };
 const bucketName = 'bucket';
 
+const settings = {
+    bucket: bucketName,
+    temp: 'C:\\temp\\azimuth-packages'
+};
+
 beforeEach(() => {
     fileUtil.getWorkingDirectory.mockClear();
     fileUtil.getFile.mockReset();
@@ -55,7 +60,7 @@ beforeEach(() => {
 
 test('Error if no metadata is set', () => {
     
-    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, bucketName);
+    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, settings);
     let err: Error | undefined = undefined;
     try {
         uploader.metadata;
@@ -84,7 +89,7 @@ test('With Metadata', (done) => {
         }
     });
 
-    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, bucketName);
+    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, settings);
     uploader.run()
         .subscribe(() => {
             expect(fileUtil.getFile).toHaveBeenCalled();
@@ -104,7 +109,7 @@ test('New Project in Repo', (done) => {
         }
     });
 
-    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, bucketName);
+    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, settings);
     uploader.run()
         .subscribe(() => {
             expect(fileUtil.getFile).toHaveBeenCalled();
@@ -134,7 +139,7 @@ test('Try to overwrite repo version', (done) => {
         }
     });
 
-    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, bucketName);
+    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, settings);
     uploader.run()
         .subscribe({
             next: () => done('whoops'),
@@ -166,7 +171,7 @@ test('With Out Metadata', (done) => {
         }
     });
 
-    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, bucketName);
+    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, settings);
     uploader.run()
         .subscribe({
             next: () => done('whoops'),
@@ -194,7 +199,7 @@ test('With Out Metadata No Repo', (done) => {
         }
     });
 
-    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, bucketName);
+    const uploader = new PackageUploaderImpl(<FileUtil><any>fileUtil, uploadUtil, settings);
     uploader.run()
         .subscribe({
             next: () => done('whoops'),

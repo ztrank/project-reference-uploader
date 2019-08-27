@@ -3,4 +3,5 @@ export namespace Symbols {
     export const UploadUtil: symbol = Symbol.for('UploadUtil');
     export const StorageClient: symbol = Symbol.for('StorageClient');
     export const StorageBucket: symbol = Symbol.for('StorageBucket');
+    export const Settings: symbol = Symbol.for('Settings');
 }
