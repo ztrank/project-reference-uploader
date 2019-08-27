@@ -33,7 +33,7 @@
     "tslint": "^5.19.0",
     "typescript": "^3.5.3"
   },
-  "version": "1.2.1",
+  "version": "1.2.2",
   "bugs": {
     "url": "https://github.com/ztrank/project-reference-uploader/issues"
   },
