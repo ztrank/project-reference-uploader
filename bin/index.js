@@ -7,7 +7,7 @@ dist.Init(args.account, args.bucket)
     .run()
     .subscribe({
         next: () => {},
-        error: err => conole.error(err),
+        error: err => console.error(err),
         complete: () => {
             process.exit(0);
         }
