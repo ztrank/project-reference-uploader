@@ -3,7 +3,7 @@ import { injectable, inject } from 'inversify';
 import { Symbols } from '../symbols';
 import { FileUtil } from '../interfaces/File.Util';
 import { UploadUtil } from '../interfaces/Upload.Util';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { Metadata } from '../interfaces/Metadata';
 import { RepositoryMetadata } from '../interfaces/Repository.Metadata';
@@ -50,7 +50,12 @@ export class PackageUploaderImpl implements PackageUploader {
                 catchError(() => this.createMetadata()),
                 map(file => <Metadata>JSON.parse(file)),
                 map(meta => this._metadata = meta),
-                map(() => {}),
+                mergeMap(() => {
+                    if(!this.metadata.directory) {
+                        return throwError('Unable to upload a blank directory. This has unintended consequences!');
+                    }
+                    return of(undefined);
+                })
             );
     }
 
