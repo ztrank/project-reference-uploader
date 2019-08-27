@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Container } from 'inversify';
 import { Symbols } from './symbols';
 import { FileUtilImpl } from './implementations/File.Util.Impl';
